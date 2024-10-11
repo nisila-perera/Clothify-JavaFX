@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.cashier.CashierLoginFormController">
+   <children>
+      <Text fill="WHITE" layoutX="80.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clothify">
+         <font>
+            <Font name="Impact" size="42.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="298.0" layoutY="243.0" prefHeight="36.0" prefWidth="127.0" style="-fx-background-color: red; -fx-background-radius: 25;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="438.0" layoutY="243.0" onAction="#btnLoginOnAction" prefHeight="36.0" prefWidth="127.0" style="-fx-background-color: blue; -fx-background-radius: 25;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <Text fill="WHITE" layoutX="333.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login as a cashier">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="375.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot password" underline="true">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Text>
+      <TextField fx:id="cashierEmailField" layoutX="298.0" layoutY="140.0" prefHeight="32.0" prefWidth="267.0" promptText="E-mail" style="-fx-background-radius: 25;" />
+      <TextField fx:id="cashierPasswordField" layoutX="298.0" layoutY="187.0" prefHeight="32.0" prefWidth="267.0" promptText="Password" style="-fx-background-radius: 25;" />
+   </children>
+</AnchorPane>

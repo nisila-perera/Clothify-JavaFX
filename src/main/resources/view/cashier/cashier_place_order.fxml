@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="318.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.cashier.CashierHomeFormController">
+   <children>
+      <TableView layoutX="29.0" layoutY="33.0" prefHeight="175.0" prefWidth="300.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Text fill="WHITE" layoutX="135.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="29.0" layoutY="258.0" prefHeight="32.0" prefWidth="300.0" style="-fx-background-color: #1EFF00; -fx-background-radius: 10;" text="Add to order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="387.0" layoutY="127.0" prefHeight="28.0" prefWidth="175.0" style="-fx-background-color: #0033FF; -fx-background-radius: 25;" text="Mange Suppliers" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="387.0" layoutY="168.0" prefHeight="28.0" prefWidth="175.0" style="-fx-background-color: #0033FF; -fx-background-radius: 25;" text="Generate Reports" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="387.0" layoutY="208.0" prefHeight="28.0" prefWidth="175.0" style="-fx-background-color: #0033FF; -fx-background-radius: 25;" text="Manage Customers" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="462.0" layoutY="258.0" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #FF1B1F; -fx-background-radius: 25;" text="Log Out" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <Text fill="WHITE" layoutX="29.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="QTY" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="235.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="300.0" layoutY="216.0" prefHeight="32.0" prefWidth="29.0" style="-fx-background-color: #0033FF; -fx-background-radius: 5;" text="+" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="262.0" layoutY="216.0" prefHeight="32.0" prefWidth="29.0" style="-fx-background-color: #FF1B1F; -fx-background-radius: 5;" text="-" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
