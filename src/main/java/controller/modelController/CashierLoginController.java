@@ -1,4 +1,4 @@
-package controller.cashier.login;
+package controller.modelController;
 
 import db.DBConnection;
 import model.Employee;

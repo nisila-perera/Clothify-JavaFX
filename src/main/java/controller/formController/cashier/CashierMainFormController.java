@@ -1,8 +1,5 @@
-package controller.cashier;
+package controller.formController.cashier;
 
-import controller.cashier.customer.CashierCustomerManagerFormController;
-import controller.cashier.order.CashierCheckoutFormController;
-import controller.cashier.order.CashierPlaceOrderFormController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,15 +13,16 @@ import java.util.ResourceBundle;
 
 
 
-public class CashierMainFormController implements Initializable {
+public class CashierMainFormController {
 
     public Text activeCashierTxt;
 
     @FXML
     private BorderPane mainBorderPane;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    public void setActiveCashierName(String employee){
+        activeCashierTxt.setText(employee);
         loadCashierHomeForm();
     }
 
@@ -52,9 +50,6 @@ public class CashierMainFormController implements Initializable {
         }
     }
 
-    public void setActiveCashierName(String employee){
-        activeCashierTxt.setText(employee);
-    }
 
     public void loadPlaceOrderForm(){
         try {

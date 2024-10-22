@@ -1,6 +1,5 @@
-package controller.cashier.order;
+package controller.formController.cashier;
 
-import controller.cashier.CashierMainFormController;
 import javafx.event.ActionEvent;
 
 public class CashierCheckoutFormController {

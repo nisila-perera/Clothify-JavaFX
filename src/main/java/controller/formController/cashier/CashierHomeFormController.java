@@ -1,20 +1,14 @@
-package controller.cashier;
+package controller.formController.cashier;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
-
-import java.net.URL;
-import java.util.ResourceBundle;
+import lombok.Setter;
 
 public class CashierHomeFormController {
 
     public Text cashierWelcomeTxt;
+    @Setter
     private CashierMainFormController cashierMainFormController;
-
-    public void setCashierMainFormController(CashierMainFormController controller) {
-        this.cashierMainFormController = controller;
-    }
 
     public void btnPlaceOrderFormOnAction(ActionEvent actionEvent) {
         if (cashierMainFormController != null) {

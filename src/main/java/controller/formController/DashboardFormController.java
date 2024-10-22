@@ -1,4 +1,4 @@
-package controller;
+package controller.formController;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,7 @@ public class DashboardFormController {
     public void btnLoginAsCashier(ActionEvent actionEvent) {
         Stage stage = new Stage();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/cashier/cashier_login.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../../view/cashier/cashier_login.fxml"))));
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -21,7 +21,7 @@ public class DashboardFormController {
     public void btnLoginAsAdmin(ActionEvent actionEvent) {
         Stage stage = new Stage();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/admin/admin_login.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../../view/admin/admin_login.fxml"))));
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);

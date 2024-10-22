@@ -1,14 +1,19 @@
-package controller.cashier.customer;
+package controller.formController.cashier;
 
-import controller.cashier.CashierMainFormController;
 import javafx.event.ActionEvent;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import lombok.Setter;
 
 public class CashierCustomerManagerFormController {
+    public TextField itemSearchField;
+    public TextField itemSearchField1;
+    public TextField itemSearchField11;
+    public TextField itemSearchField111;
+    public TextField itemSearchField1111;
+    @Setter
     private CashierMainFormController cashierMainFormController;
-
-    public void setCashierMainFormController(CashierMainFormController controller) {
-        this.cashierMainFormController = controller;
-    }
 
     public void btnCancelOrderOnAction(ActionEvent actionEvent) {
         cashierMainFormController.loadCashierHomeForm();

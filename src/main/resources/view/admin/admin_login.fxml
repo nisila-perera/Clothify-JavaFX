@@ -7,19 +7,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.admin.AdminLoginFormController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.formController.admin.AdminLoginFormController">
    <children>
       <Text fill="WHITE" layoutX="80.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clothify">
          <font>
             <Font name="Impact" size="42.0" />
          </font>
       </Text>
-      <JFXButton layoutX="298.0" layoutY="243.0" prefHeight="36.0" prefWidth="127.0" style="-fx-background-color: red; -fx-background-radius: 25;" text="Cancel" textFill="WHITE">
+      <JFXButton layoutX="298.0" layoutY="243.0" onAction="#btnAdminCancelOnAction" prefHeight="36.0" prefWidth="127.0" style="-fx-background-color: red; -fx-background-radius: 25;" text="Cancel" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="438.0" layoutY="243.0" prefHeight="36.0" prefWidth="127.0" style="-fx-background-color: blue; -fx-background-radius: 25;" text="Login" textFill="WHITE">
+      <JFXButton layoutX="438.0" layoutY="243.0" onAction="#btnAdminLoginOnAction" prefHeight="36.0" prefWidth="127.0" style="-fx-background-color: blue; -fx-background-radius: 25;" text="Login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -34,7 +34,7 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Text>
-      <TextField layoutX="298.0" layoutY="140.0" prefHeight="32.0" prefWidth="267.0" promptText="E-mail" style="-fx-background-radius: 25;" />
-      <PasswordField fx:id="cashierPasswordField" layoutX="298.0" layoutY="184.0" prefHeight="32.0" prefWidth="267.0" promptText="Password" style="-fx-background-radius: 25;" />
+      <TextField fx:id="adminEmailField" layoutX="298.0" layoutY="140.0" prefHeight="32.0" prefWidth="267.0" promptText="E-mail" style="-fx-background-radius: 25;" />
+      <PasswordField fx:id="adminPasswordField" layoutX="298.0" layoutY="184.0" prefHeight="32.0" prefWidth="267.0" promptText="Password" style="-fx-background-radius: 25;" />
    </children>
 </AnchorPane>
