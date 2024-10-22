@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="480.0" prefWidth="680.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.cashier.customer.CashierCustomerManagerFormController">
+   <children>
+      <TextField fx:id="itemSearchField" layoutX="33.0" layoutY="79.0" prefHeight="31.0" prefWidth="243.0" promptText="Search Customer" />
+      <JFXButton layoutX="288.0" layoutY="79.0" onAction="#btnSearchCustomerOnAction" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #0033FF; -fx-background-radius: 5;" text="Search" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <TableView layoutX="33.0" layoutY="128.0" prefHeight="272.0" prefWidth="323.0">
+         <columns>
+            <TableColumn prefWidth="47.333316802978516" text="ID" />
+            <TableColumn prefWidth="98.6666488647461" text="Name" />
+            <TableColumn prefWidth="86.66664123535156" text="Mobile" />
+            <TableColumn prefWidth="86.66664123535156" text="Address" />
+         </columns>
+      </TableView>
+      <Text fill="WHITE" layoutX="151.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="262.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Manager" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="33.0" layoutY="415.0" onAction="#btnSelectCustomerOnAction" prefHeight="32.0" prefWidth="323.0" style="-fx-background-color: #1EFF00; -fx-background-radius: 10;" text="Select and continue" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="376.0" layoutY="362.0" onAction="#btnAddCustomerOnAction" prefHeight="32.0" prefWidth="292.0" style="-fx-background-color: #1EFF00; -fx-background-radius: 10;" text="Add Customer" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="566.0" layoutY="415.0" onAction="#btnUpdateCustomerOnAction" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #0033FF; -fx-background-radius: 10;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="376.0" layoutY="415.0" onAction="#btnCancelOrderOnAction" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #FF1B1F; -fx-background-radius: 10;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <Text fill="WHITE" layoutX="451.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Customer" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="383.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID - #001" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="itemSearchField1" layoutX="383.0" layoutY="133.0" prefHeight="31.0" prefWidth="277.0" promptText="Customer Name" style="-fx-background-radius: 25;" />
+      <TextField fx:id="itemSearchField11" layoutX="383.0" layoutY="177.0" prefHeight="31.0" prefWidth="277.0" promptText="Customer Mobile" style="-fx-background-radius: 25;" />
+      <TextField fx:id="itemSearchField111" layoutX="383.0" layoutY="221.0" prefHeight="31.0" prefWidth="277.0" promptText="Customer E-mail" style="-fx-background-radius: 25;" />
+      <TextField fx:id="itemSearchField1111" layoutX="383.0" layoutY="267.0" prefHeight="31.0" prefWidth="277.0" promptText="Customer Address" style="-fx-background-radius: 25;" />
+      <JFXButton layoutX="456.0" layoutY="415.0" onAction="#btnDeleteCustomerOnAction" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #FF1B1F; -fx-background-radius: 10;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="376.0" layoutY="315.0" onAction="#btnAddCustomerAndContinueOnAction" prefHeight="32.0" prefWidth="292.0" style="-fx-background-color: #1EFF00; -fx-background-radius: 10;" text="Add Customer and Continue Order" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

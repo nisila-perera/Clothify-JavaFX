@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.cashier.CashierLoginFormController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.cashier.login.CashierLoginFormController">
    <children>
       <Text fill="WHITE" layoutX="80.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clothify">
          <font>
             <Font name="Impact" size="42.0" />
          </font>
       </Text>
-      <JFXButton layoutX="298.0" layoutY="243.0" prefHeight="36.0" prefWidth="127.0" style="-fx-background-color: red; -fx-background-radius: 25;" text="Cancel" textFill="WHITE">
+      <JFXButton layoutX="298.0" layoutY="243.0" onAction="#btnCancelOnAction" prefHeight="36.0" prefWidth="127.0" style="-fx-background-color: red; -fx-background-radius: 25;" text="Cancel" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -34,6 +35,6 @@
          </font>
       </Text>
       <TextField fx:id="cashierEmailField" layoutX="298.0" layoutY="140.0" prefHeight="32.0" prefWidth="267.0" promptText="E-mail" style="-fx-background-radius: 25;" />
-      <TextField fx:id="cashierPasswordField" layoutX="298.0" layoutY="187.0" prefHeight="32.0" prefWidth="267.0" promptText="Password" style="-fx-background-radius: 25;" />
+      <PasswordField fx:id="cashierPasswordField" layoutX="299.0" layoutY="187.0" prefHeight="32.0" prefWidth="267.0" promptText="Password" style="-fx-background-radius: 25;" />
    </children>
 </AnchorPane>

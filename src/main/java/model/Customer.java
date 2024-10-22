@@ -1,4 +1,4 @@
-package dto;
+package model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,11 +9,10 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-
 public class Customer {
-    private Integer customerId;
-    private String customerName;
-    private String customerAddress;
-    private String customerMobileNumber;
-    private String customerEmail;
+    private String id;
+    private String name;
+    private String phone;
+    private String email;
+    private String address;
 }
