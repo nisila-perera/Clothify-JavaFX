@@ -3,11 +3,14 @@ package controller.formController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class DashboardFormController {
+    public Text logoTxt;
+
     public void btnLoginAsCashier(ActionEvent actionEvent) {
         Stage stage = new Stage();
         try {
@@ -26,5 +29,9 @@ public class DashboardFormController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void btnCancelOnAction(ActionEvent actionEvent) {
+        ((Stage) logoTxt.getScene().getWindow()).close();
     }
 }

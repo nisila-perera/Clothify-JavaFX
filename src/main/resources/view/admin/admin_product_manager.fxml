@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="480.0" prefWidth="680.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.formController.admin.AdminProductManagerFormController">
+   <children>
+      <TextField fx:id="searchProductField" layoutX="33.0" layoutY="79.0" prefHeight="31.0" prefWidth="243.0" promptText="Search Product" />
+      <JFXButton layoutX="288.0" layoutY="79.0" onAction="#btnSearchProductOnAction" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #0033FF; -fx-background-radius: 5;" text="Search" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <TableView fx:id="productTable" layoutX="33.0" layoutY="128.0" prefHeight="272.0" prefWidth="332.0">
+         <columns>
+            <TableColumn prefWidth="42.666656494140625" text="ID" />
+            <TableColumn prefWidth="92.66665649414062" text="Name" />
+            <TableColumn prefWidth="51.333343505859375" text="Stock" />
+            <TableColumn prefWidth="61.33331298828125" text="Price" />
+            <TableColumn prefWidth="83.33331298828125" text="Discount" />
+         </columns>
+      </TableView>
+      <Text fill="WHITE" layoutX="142.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="268.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products Manager" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="33.0" layoutY="415.0" onAction="#btnSelectProductOnAction" prefHeight="32.0" prefWidth="332.0" style="-fx-background-color: #1EFF00; -fx-background-radius: 10;" text="Select" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="566.0" layoutY="415.0" onAction="#btnUpdateProductOnAction" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #0033FF; -fx-background-radius: 10;" text="Update" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="376.0" layoutY="415.0" onAction="#btnCancelOnAction" prefHeight="32.0" prefWidth="67.0" style="-fx-background-color: #FF1B1F; -fx-background-radius: 10;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <Text fill="WHITE" layoutX="451.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage Product" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="384.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product ID - #001" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="supplierNameField" layoutX="378.0" layoutY="150.0" prefHeight="31.0" prefWidth="277.0" promptText="Product Name" style="-fx-background-radius: 25;" />
+      <TextField fx:id="supplierAddressField" layoutX="378.0" layoutY="192.0" prefHeight="31.0" prefWidth="277.0" promptText="Available Stock" style="-fx-background-radius: 25;" />
+      <TextField fx:id="supplierContactField" layoutX="378.0" layoutY="235.0" prefHeight="31.0" prefWidth="277.0" promptText="Weight or Volume" style="-fx-background-radius: 25;" />
+      <TextField fx:id="supplierEmailField" layoutX="379.0" layoutY="280.0" prefHeight="31.0" prefWidth="277.0" promptText="Price" style="-fx-background-radius: 25;" />
+      <JFXButton layoutX="456.0" layoutY="415.0" onAction="#btnDeleteProductOnAction" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #FF1B1F; -fx-background-radius: 10;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="576.0" layoutY="368.0" onAction="#btnAddProductOnAction" prefHeight="32.0" prefWidth="87.0" style="-fx-background-color: #1EFF00; -fx-background-radius: 10;" text="Add" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="380.0" layoutY="368.0" onAction="#btnGenerateNewIdOnAction" prefHeight="32.0" prefWidth="190.0" style="-fx-background-color: #0033FF; -fx-background-radius: 10;" text="New Product" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <TextField fx:id="supplierEmailField1" layoutX="379.0" layoutY="323.0" prefHeight="31.0" prefWidth="277.0" promptText="Discount in %" style="-fx-background-radius: 25;" />
+   </children>
+</AnchorPane>

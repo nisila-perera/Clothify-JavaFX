@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Admin;
 import util.Encryptor;
@@ -60,5 +61,20 @@ public class AdminLoginFormController {
 
     public void btnAdminCancelOnAction(ActionEvent actionEvent) {
         ((Stage) adminEmailField.getScene().getWindow()).close();
+    }
+
+    public void btnResetPasswordOnClick(MouseEvent mouseEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/admin/admin_password_reset.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            ((Stage) adminEmailField.getScene().getWindow()).close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
