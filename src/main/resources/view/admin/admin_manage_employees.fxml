@@ -19,10 +19,10 @@
       </JFXButton>
       <TableView fx:id="empTable" layoutX="33.0" layoutY="128.0" prefHeight="272.0" prefWidth="323.0">
          <columns>
-            <TableColumn prefWidth="47.333316802978516" text="ID" />
-            <TableColumn prefWidth="98.6666488647461" text="Name" />
-            <TableColumn prefWidth="94.00001525878906" text="Mobile" />
-            <TableColumn prefWidth="82.0" text="Address" />
+            <TableColumn fx:id="empId" prefWidth="47.333316802978516" text="ID" />
+            <TableColumn fx:id="empName" prefWidth="83.99996185302734" text="Name" />
+            <TableColumn fx:id="empMobile" prefWidth="87.33328247070312" text="Mobile" />
+            <TableColumn fx:id="empEmail" prefWidth="104.66670227050781" text="Email" />
          </columns>
       </TableView>
       <Text fill="WHITE" layoutX="142.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employees" textAlignment="CENTER">
@@ -40,7 +40,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="572.0" layoutY="367.0" onAction="#btnAddEmpOnAction" prefHeight="32.0" prefWidth="87.0" style="-fx-background-color: #1EFF00; -fx-background-radius: 10;" text="Add" textFill="WHITE">
+      <JFXButton fx:id="addBtn" layoutX="572.0" layoutY="367.0" onAction="#btnAddEmpOnAction" prefHeight="32.0" prefWidth="87.0" style="-fx-background-color: #1EFF00; -fx-background-radius: 10;" text="Add" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -60,7 +60,7 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="394.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee ID - #001" textAlignment="CENTER">
+      <Text fill="WHITE" layoutX="394.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee ID -" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -80,5 +80,10 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
+      <Text fx:id="empIdTxt" fill="WHITE" layoutX="506.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Select" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

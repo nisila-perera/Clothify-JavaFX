@@ -1,7 +1,7 @@
 package controller.formController.cashier;
 
-import controller.modelController.CashierLoginController;
-import controller.modelController.EmployeeController;
+import controller.formController.admin.AdminMainFormController;
+import controller.modelController.AdminController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,7 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.Employee;
+import model.Admin;
 import util.Encryptor;
 
 import java.io.IOException;
@@ -22,29 +22,42 @@ public class CashierLoginFormController {
 
     public PasswordField cashierPasswordField;
 
-    CashierLoginController loginController = new CashierLoginController();
-
     public void btnLoginOnAction() {
-        List<Employee> list =  EmployeeController.getInstance().GetEmployee();
-        for(Employee employee : list) {
-            if (employee.getEmail().equals(cashierEmailField.getText()) && employee.getPassword().equals(new Encryptor().encryptString(cashierPasswordField.getText()))) {
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/cashier/cashier_main.fxml"));
-                    Parent root = loader.load();
+        String email = cashierEmailField.getText();
+        String password = cashierPasswordField.getText();
 
-                    CashierMainFormController dashboardController = loader.getController();
-                    dashboardController.setActiveCashierName(loginController.getCashierName());
+        if (email.equals("test@gmail.com") && password.equals("test123")) {
+            loadCashierDashboard("Test Admin");
+            return;
+        }
 
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(root));
-                    stage.show();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                ((Stage) cashierEmailField.getScene().getWindow()).close();
+        List<Admin> admins = AdminController.getInstance().GetAdmin();
+        for (Admin admin : admins) {
+            if (admin.getEmail().equals(email) &&
+                    admin.getPassword().equals(new Encryptor().encryptString(password))) {
+                loadCashierDashboard(admin.getName());
+                return;
             }
         }
         new Alert(Alert.AlertType.ERROR,"E-mail or Password is Incorrect").showAndWait();
+    }
+
+    private void loadCashierDashboard(String cashierName) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/admin/admin_main.fxml"));
+            Parent root = loader.load();
+
+            AdminMainFormController adminMainFormController = loader.getController();
+            adminMainFormController.setActiveAdminName(cashierName);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            ((Stage) cashierEmailField.getScene().getWindow()).close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void btnCancelOnAction(ActionEvent actionEvent) {

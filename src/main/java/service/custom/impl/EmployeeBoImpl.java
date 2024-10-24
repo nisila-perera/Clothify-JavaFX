@@ -41,7 +41,7 @@ public class EmployeeBoImpl implements EmployeeBo {
     @Override
     public List<Employee> getEmployee() {
         EmployeeDao employeedao = DaoFactory.getInstance().getDaoType(DaoType.EMPLOYEE);
-        List<EmployeeEntity> list =employeedao.getAll();
+        List<EmployeeEntity> list = employeedao.getAll();
         List<Employee> employeelist = new ArrayList<>();
         for (EmployeeEntity entity : list) {
             employeelist.add(new ModelMapper().map(entity, Employee.class));
