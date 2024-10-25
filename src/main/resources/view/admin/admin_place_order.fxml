@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -11,13 +12,6 @@
 
 <AnchorPane prefHeight="480.0" prefWidth="680.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.formController.admin.AdminPlaceOrderFormController">
    <children>
-      <TableView fx:id="itemsTable" layoutX="23.0" layoutY="204.0" prefHeight="171.0" prefWidth="323.0">
-        <columns>
-          <TableColumn prefWidth="119.33334350585938" text="Item Name" />
-          <TableColumn prefWidth="94.6666259765625" text="Available QTY" />
-            <TableColumn prefWidth="70.66668701171875" text="Price" />
-        </columns>
-      </TableView>
       <Text fill="WHITE" layoutX="141.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="21.0" />
@@ -60,10 +54,10 @@
       </JFXButton>
       <TableView fx:id="cartTable" layoutX="363.0" layoutY="158.0" prefHeight="218.0" prefWidth="297.0">
          <columns>
-            <TableColumn prefWidth="88.666748046875" text="Item Name" />
-            <TableColumn prefWidth="37.3333740234375" text="QTY" />
-            <TableColumn prefWidth="60.66668701171875" text="Price" />
-            <TableColumn prefWidth="63.33331298828125" text="Total" />
+            <TableColumn fx:id="cartItemNameCol" prefWidth="88.666748046875" text="Item Name" />
+            <TableColumn fx:id="cartQtyCol" prefWidth="48.0" text="QTY" />
+            <TableColumn fx:id="cartPriceCol" prefWidth="75.99996948242188" text="Price" />
+            <TableColumn fx:id="cartTotalCol" prefWidth="83.33331298828125" text="Total" />
          </columns>
       </TableView>
       <Text fill="WHITE" layoutX="484.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cart" textAlignment="CENTER">
@@ -76,7 +70,7 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="619.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" textAlignment="CENTER">
+      <Text fx:id="totalTxt" fill="WHITE" layoutX="619.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0.00" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
@@ -114,5 +108,14 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXButton>
+      <ComboBox fx:id="customerCmb" layoutX="329.0" layoutY="65.0" prefHeight="32.0" prefWidth="150.0" promptText="Customers" />
+      <TableView fx:id="itemsTable" layoutX="23.0" layoutY="204.0" prefHeight="171.0" prefWidth="323.0">
+        <columns>
+          <TableColumn fx:id="itemNameCol" prefWidth="94.66665077209473" text="Item Name" />
+          <TableColumn fx:id="itemQtyCol" prefWidth="58.666648864746094" text="QTY" />
+            <TableColumn fx:id="itemDiscountCol" prefWidth="69.33328247070312" text="Discount" />
+            <TableColumn fx:id="itemPrice" prefWidth="100.66670227050781" text="Price" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

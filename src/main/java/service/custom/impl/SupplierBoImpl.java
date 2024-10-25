@@ -28,7 +28,10 @@ public class SupplierBoImpl implements SupplierBo {
 
     @Override
     public boolean deleteSupplier(Supplier supplier) {
-        return false;
+        SupplierEntity entity = new ModelMapper().map(supplier, SupplierEntity.class);
+        SupplierDao supplierDao = DaoFactory.getInstance().getDaoType(DaoType.SUPPLIER);
+        supplierDao.delete(entity.getId());
+        return true;
     }
 
     @Override

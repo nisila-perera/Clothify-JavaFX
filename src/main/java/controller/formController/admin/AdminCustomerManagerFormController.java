@@ -118,7 +118,6 @@ public class AdminCustomerManagerFormController implements Initializable {
     }
 
     public void btnGenerateNewIdOnAction(ActionEvent actionEvent) {
-        clearFields();
         customerIdTxt.setText(CustomerController.getInstance().generateCustomerId());
         addBtn.setDisable(false);
         addAndContinueBtn.setDisable(false);

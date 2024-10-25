@@ -1,5 +1,6 @@
 package controller.modelController;
 
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import model.Supplier;
 import service.custom.SupplierBo;
