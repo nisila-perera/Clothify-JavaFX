@@ -1,20 +1,19 @@
 package controller.formController.admin;
 
+import com.jfoenix.controls.JFXButton;
 import controller.modelController.CustomerController;
+import controller.modelController.OrderController;
 import controller.modelController.ProductController;
-import controller.modelController.SupplierController;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import lombok.Setter;
-import model.Customer;
+import model.OrderDetails;
 import model.Product;
 
 import java.net.URL;
@@ -24,31 +23,81 @@ import java.util.stream.Collectors;
 
 public class AdminPlaceOrderFormController implements Initializable {
     public TableView<Product> itemsTable;
+    public Text qtyTxt;
     public TextField itemSearchField;
     public TextField customerSearchField;
-    public TableView cartTable;
-    public Text qtyTxt;
-    public TableColumn cartItemNameCol;
-    public TableColumn cartQtyCol;
-    public TableColumn cartPriceCol;
-    public TableColumn cartTotalCol;
+    public TableView<OrderDetails> cartTable;
+    public TableColumn<OrderDetails, String> cartItemNameCol;
+    public TableColumn<OrderDetails, Integer> cartQtyCol;
+    public TableColumn<OrderDetails, Double> cartPriceCol;
+    public TableColumn<OrderDetails, Double> cartTotalCol;
     public Text totalTxt;
     public ComboBox customerCmb;
     public TableColumn itemNameCol;
     public TableColumn itemQtyCol;
     public TableColumn itemDiscountCol;
     public TableColumn itemPrice;
+    public Text orderIdTxt;
+    public JFXButton addCustomerBtn;
+    public Text pleaseSelectTxt;
+    public Text customerNameTxt;
     private Product product;
+    private Product selectedProduct;
+    private OrderDetails selectedCartItem;
     @Setter
     private AdminMainFormController adminMainFormController;
+    private List<OrderDetails> cartList = OrderController.getInstance().getCart();
 
     public void btnAddToOrderOnAction(ActionEvent actionEvent) {
+        if (selectedProduct == null) {
+            new Alert(Alert.AlertType.ERROR, "Please select a product first").showAndWait();
+            return;
+        }
+
+        String qtyText = qtyTxt.getText();
+        if (qtyText == null || qtyText.isEmpty() || qtyText.equals("0")) {
+            new Alert(Alert.AlertType.ERROR, "Please enter a valid quantity").showAndWait();
+            return;
+        }
+
+        int quantity = Integer.parseInt(qtyText);
+        if (quantity > selectedProduct.getQty()) {
+            new Alert(Alert.AlertType.ERROR, "Not enough stock available").showAndWait();
+            return;
+        }
+
+        OrderDetails newItem = new OrderDetails(
+                selectedProduct.getId(),
+                selectedProduct.getName(),
+                orderIdTxt.getText(),
+                quantity,
+                selectedProduct.getPrice()
+        );
+
+        double totalPrice = quantity * selectedProduct.getPrice();
+        double discount = (totalPrice/100) * selectedProduct.getDiscount();
+        newItem.setPrice(totalPrice);
+        newItem.setDiscount(discount);
+
+        cartList.add(newItem);
+
+        cartTable.setItems(FXCollections.observableArrayList(cartList));
+        cartTable.refresh();
+
+        OrderController.getInstance().setTotal(totalPrice-discount);
+        totalTxt.setText(OrderController.getInstance().getTotal());
+
+        selectedProduct = null;
+        qtyTxt.setText("0");
+        itemsTable.getSelectionModel().clearSelection();
     }
+
 
     public void btnCompleteOrderOnAction(ActionEvent actionEvent) {
         if (adminMainFormController!=null){
             adminMainFormController.loadCheckoutForm();
         }
+        //todo
     }
 
     public void btnCancelOrderOnAction(ActionEvent actionEvent) {
@@ -75,7 +124,7 @@ public class AdminPlaceOrderFormController implements Initializable {
     }
 
     public void btnSearchCustomerOnAction(ActionEvent actionEvent) {
-        String mobileNumber = customerSearchField.getText(); // Get text from the mobile number text field
+        String mobileNumber = customerSearchField.getText();
 
         ObservableList<String> filteredCustomers = FXCollections.observableArrayList(
                 CustomerController.getInstance()
@@ -98,22 +147,38 @@ public class AdminPlaceOrderFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        OrderController.getInstance().clearCart();
+        cartList.clear();
+        orderIdTxt.setText(OrderController.getInstance().generateId());
+
         itemNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         itemQtyCol.setCellValueFactory(new PropertyValueFactory<>("qty"));
         itemDiscountCol.setCellValueFactory(new PropertyValueFactory<>("discount"));
         itemPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        itemsTable.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, t1) ->{
-            if(t1!=null){
-                product = t1;
+        cartItemNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        cartQtyCol.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        cartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        cartTotalCol.setCellValueFactory(cellData ->
+                new SimpleObjectProperty<>(cellData.getValue().getPrice() * cellData.getValue().getQty()));
+
+        itemsTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                selectedProduct = newSelection;
+                qtyTxt.setText("1");
             }
-        }));
+        });
+
+        cartTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            selectedCartItem = newSelection;
+        });
+
 
         ObservableList<String> customers = FXCollections.observableArrayList(
                 CustomerController.getInstance()
                         .getCustomer()
                         .stream()
-                        .map(supplier -> supplier.getName())
+                        .map(customer -> customer.getName())
                         .collect(Collectors.toList())
         );
 
@@ -121,7 +186,7 @@ public class AdminPlaceOrderFormController implements Initializable {
         loadProductsTable();
     }
 
-    private void loadProductsTable(){
+    private void loadProductsTable() {
         List<Product> products = ProductController.getInstance().getProduct();
         System.out.println("Loading products: " + products.size());
         itemsTable.setItems(FXCollections.observableArrayList(products));
