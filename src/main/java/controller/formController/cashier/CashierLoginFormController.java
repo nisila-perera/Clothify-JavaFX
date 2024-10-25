@@ -2,6 +2,7 @@ package controller.formController.cashier;
 
 import controller.formController.admin.AdminMainFormController;
 import controller.modelController.AdminController;
+import controller.modelController.EmployeeController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Admin;
+import model.Employee;
 import util.Encryptor;
 
 import java.io.IOException;
@@ -27,15 +29,15 @@ public class CashierLoginFormController {
         String password = cashierPasswordField.getText();
 
         if (email.equals("test@gmail.com") && password.equals("test123")) {
-            loadCashierDashboard("Test Admin");
+            loadCashierDashboard("Test Cashier");
             return;
         }
 
-        List<Admin> admins = AdminController.getInstance().GetAdmin();
-        for (Admin admin : admins) {
-            if (admin.getEmail().equals(email) &&
-                    admin.getPassword().equals(new Encryptor().encryptString(password))) {
-                loadCashierDashboard(admin.getName());
+        List<Employee> employees = EmployeeController.getInstance().getEmployee();
+        for (Employee employee : employees) {
+            if (employee.getEmail().equals(email) &&
+                    employee.getPassword().equals(new Encryptor().encryptString(password))) {
+                loadCashierDashboard(employee.getName());
                 return;
             }
         }
@@ -44,11 +46,11 @@ public class CashierLoginFormController {
 
     private void loadCashierDashboard(String cashierName) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/admin/admin_main.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/cashier/cashier_main.fxml"));
             Parent root = loader.load();
 
-            AdminMainFormController adminMainFormController = loader.getController();
-            adminMainFormController.setActiveAdminName(cashierName);
+            CashierMainFormController cashierMainFormController = loader.getController();
+            cashierMainFormController.setActiveCashierName(cashierName);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
