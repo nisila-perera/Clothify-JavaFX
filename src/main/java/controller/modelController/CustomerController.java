@@ -2,10 +2,8 @@ package controller.modelController;
 
 import javafx.scene.control.Alert;
 import model.Customer;
-import model.Employee;
 import service.custom.CustomerBo;
 import service.custom.impl.CustomerBoImpl;
-import util.Encryptor;
 
 import java.util.List;
 import java.util.regex.Pattern;
@@ -39,9 +37,9 @@ public class CustomerController {
 
     public String generateCustomerId() {
         List<Customer> list = customerService.getCustomer();
-        list.sort((employee1, employee2) -> {
-            int id1 = Integer.parseInt(employee1.getId().split("Cust")[1]);
-            int id2 = Integer.parseInt(employee2.getId().split("Cust")[1]);
+        list.sort((customer1, customer2) -> {
+            int id1 = Integer.parseInt(customer1.getId().split("Cust")[1]);
+            int id2 = Integer.parseInt(customer2.getId().split("Cust")[1]);
             return Integer.compare(id1, id2);
         });
         int id = list.isEmpty() ? 1 : Integer.parseInt((list.get(list.size() - 1).getId().split("Cust")[1])) + 1;

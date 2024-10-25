@@ -18,10 +18,10 @@
       </JFXButton>
       <TableView fx:id="supplierTable" layoutX="33.0" layoutY="128.0" prefHeight="272.0" prefWidth="323.0">
          <columns>
-            <TableColumn prefWidth="47.333316802978516" text="ID" />
-            <TableColumn prefWidth="98.6666488647461" text="Name" />
-            <TableColumn prefWidth="86.66664123535156" text="Mobile" />
-            <TableColumn prefWidth="86.66664123535156" text="Address" />
+            <TableColumn fx:id="colSupplierId" prefWidth="47.333316802978516" text="ID" />
+            <TableColumn fx:id="colSupplierName" prefWidth="98.6666488647461" text="Name" />
+            <TableColumn fx:id="colSupplierCompany" prefWidth="86.66664123535156" text="Company" />
+            <TableColumn fx:id="colSupplierContact" prefWidth="89.33330281575519" text="Contact" />
          </columns>
       </TableView>
       <Text fill="WHITE" layoutX="142.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Suppliers" textAlignment="CENTER">
@@ -54,21 +54,20 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="391.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier ID - #001" textAlignment="CENTER">
+      <Text fill="WHITE" layoutX="391.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier ID -" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
       <TextField fx:id="supplierNameField" layoutX="380.0" layoutY="163.0" prefHeight="31.0" prefWidth="277.0" promptText="Supplier Name" style="-fx-background-radius: 25;" />
-      <TextField fx:id="supplierAddressField" layoutX="380.0" layoutY="207.0" prefHeight="31.0" prefWidth="277.0" promptText="Supplier Address" style="-fx-background-radius: 25;" />
+      <TextField fx:id="supplierCompanyField" layoutX="380.0" layoutY="207.0" prefHeight="31.0" prefWidth="277.0" promptText="Supplier Company" style="-fx-background-radius: 25;" />
       <TextField fx:id="supplierContactField" layoutX="380.0" layoutY="251.0" prefHeight="31.0" prefWidth="277.0" promptText="Supplier Contact" style="-fx-background-radius: 25;" />
-      <TextField fx:id="supplierEmailField" layoutX="380.0" layoutY="297.0" prefHeight="31.0" prefWidth="277.0" promptText="Supplier Email" style="-fx-background-radius: 25;" />
       <JFXButton layoutX="456.0" layoutY="415.0" onAction="#btnDeleteSupplierOnAction" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #FF1B1F; -fx-background-radius: 10;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="576.0" layoutY="368.0" onAction="#btnAddSupplierOnAction" prefHeight="32.0" prefWidth="87.0" style="-fx-background-color: #1EFF00; -fx-background-radius: 10;" text="Add" textFill="WHITE">
+      <JFXButton fx:id="addBtn" layoutX="576.0" layoutY="368.0" onAction="#btnAddSupplierOnAction" prefHeight="32.0" prefWidth="87.0" style="-fx-background-color: #1EFF00; -fx-background-radius: 10;" text="Add" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -78,5 +77,10 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
+      <Text fx:id="supplierIdTxt" fill="WHITE" layoutX="495.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select supplier" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

@@ -16,5 +16,5 @@ public class Product {
     private String supplier;
     private int qty;
     private double price;
-    private String category;
+    private double discount;
 }
