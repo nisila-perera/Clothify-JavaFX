@@ -24,7 +24,7 @@ public class AdminLoginFormController {
         String email = adminEmailField.getText();
         String password = adminPasswordField.getText();
 
-        if (email.equals("test@gmail.com") && password.equals("test123")) {
+        if (email.equals("tt") && password.equals("tt")) {
             loadAdminDashboard("Test Admin");
             return;
         }

@@ -16,9 +16,7 @@ public class CustomerBoImpl implements CustomerBo {
     public boolean addCustomer(Customer customer) {
         CustomerEntity entity = new ModelMapper().map(customer, CustomerEntity.class);
         CustomerDao customerDao = DaoFactory.getInstance().getDaoType(DaoType.CUSTOMER);
-        customerDao.save(entity);
-
-        return true;
+        return customerDao.save(entity);
     }
 
     @Override

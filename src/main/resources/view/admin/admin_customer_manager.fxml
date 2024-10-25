@@ -18,10 +18,10 @@
       </JFXButton>
       <TableView fx:id="customerTable" layoutX="33.0" layoutY="128.0" prefHeight="272.0" prefWidth="323.0">
          <columns>
-            <TableColumn prefWidth="47.333316802978516" text="ID" />
-            <TableColumn prefWidth="98.6666488647461" text="Name" />
-            <TableColumn prefWidth="86.66664123535156" text="Mobile" />
-            <TableColumn prefWidth="86.66664123535156" text="Address" />
+            <TableColumn fx:id="colCustId" prefWidth="47.333316802978516" text="ID" />
+            <TableColumn fx:id="colCustName" prefWidth="98.6666488647461" text="Name" />
+            <TableColumn fx:id="colCustPhone" prefWidth="86.66664123535156" text="Mobile" />
+            <TableColumn fx:id="colCustEmail" prefWidth="89.33330281575519" text="Email" />
          </columns>
       </TableView>
       <Text fill="WHITE" layoutX="142.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customers" textAlignment="CENTER">
@@ -54,7 +54,7 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Text>
-      <Text fx:id="customerIdTxt" fill="WHITE" layoutX="394.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID - #001" textAlignment="CENTER">
+      <Text fill="WHITE" layoutX="394.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID -" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -68,12 +68,12 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="379.0" layoutY="368.0" onAction="#btnAddCustomerAndContinueOnAction" prefHeight="32.0" prefWidth="285.0" style="-fx-background-color: #1EFF00; -fx-background-radius: 10;" text="Add Customer and Continue Order" textFill="WHITE">
+      <JFXButton fx:id="addAndContinueBtn" layoutX="379.0" layoutY="368.0" onAction="#btnAddCustomerAndContinueOnAction" prefHeight="32.0" prefWidth="285.0" style="-fx-background-color: #1EFF00; -fx-background-radius: 10;" text="Add Customer and Continue Order" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="576.0" layoutY="325.0" onAction="#btnAddCustomerOnAction" prefHeight="32.0" prefWidth="87.0" style="-fx-background-color: #1EFF00; -fx-background-radius: 10;" text="Add" textFill="WHITE">
+      <JFXButton fx:id="addBtn" layoutX="576.0" layoutY="325.0" onAction="#btnAddCustomerOnAction" prefHeight="32.0" prefWidth="87.0" style="-fx-background-color: #1EFF00; -fx-background-radius: 10;" text="Add" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -83,5 +83,10 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
+      <Text fx:id="customerIdTxt" fill="WHITE" layoutX="503.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select customer" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
