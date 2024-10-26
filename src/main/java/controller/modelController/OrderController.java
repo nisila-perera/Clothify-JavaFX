@@ -1,11 +1,21 @@
 package controller.modelController;
 
+import entity.OrderDetailsEntity;
+import entity.OrderEntity;
+import entity.ProductEntity;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import javafx.scene.chart.PieChart;
+import lombok.Getter;
+import lombok.Setter;
 import model.Order;
 import model.OrderDetails;
 import model.Product;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import service.custom.OrderBo;
 import service.custom.impl.OrderBoImpl;
+import util.HibernateUtil;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,6 +31,10 @@ public class OrderController {
 
     double totalprice = 0;
 
+    @Setter
+    @Getter
+    String selectedCustomerName;
+
     private OrderController(){};
 
     public static OrderController getInstance(){
@@ -32,8 +46,9 @@ public class OrderController {
     }
 
     public List<OrderDetails> getCart(int i){
-        totalprice =0;
+        totalprice = 0;
         cart = new ArrayList<>();
+        selectedCustomerName = null; // Reset customer name
         return cart;
     }
 
@@ -72,28 +87,30 @@ public class OrderController {
         return orderservice.getOrder();
     }
 
+    public List<Order> getRecentOrders(int limit){
+        return orderservice.getRecentOrders(limit);
+    }
+
     public String generateId() {
-        List<Order> list = orderservice.getOrder();
-        if (list.isEmpty()) {
-            return "OR1";
-        }
+        try {
+            Session session = HibernateUtil.getSession();
+            String hql = "SELECT o.orid FROM OrderEntity o ORDER BY o.orid DESC";
+            List<String> results = session.createQuery(hql, String.class)
+                    .setMaxResults(1)
+                    .getResultList();
 
-        list.sort((order1, order2) -> {
-            try {
-                String id1Str = order1.getOrid().replace("OR", "");
-                String id2Str = order2.getOrid().replace("OR", "");
-                int id1 = Integer.parseInt(id1Str);
-                int id2 = Integer.parseInt(id2Str);
-                return Integer.compare(id1, id2);
-            } catch (Exception e) {
-                return 0;
+            if (results.isEmpty()) {
+                return "OR1";
             }
-        });
 
-        String lastId = list.get(list.size() - 1).getOrid();
-        String numberPart = lastId.replace("OR", "");
-        int nextId = Integer.parseInt(numberPart) + 1;
-        return "OR" + nextId;
+            String lastId = results.get(0);
+            String numberPart = lastId.replace("OR", "");
+            int nextId = Integer.parseInt(numberPart) + 1;
+            return "OR" + nextId;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "OR" + System.currentTimeMillis();
+        }
     }
 
     public void addCart(OrderDetails orderDetails){
@@ -110,5 +127,67 @@ public class OrderController {
             setTotal(orderDetails.getPrice());
         });
         return cart;
+    }
+
+    public boolean completeOrder(Order order) {
+        Session session = null;
+        org.hibernate.Transaction transaction = null;
+
+        try {
+            session = HibernateUtil.getSession();
+            transaction = session.beginTransaction();
+
+            OrderEntity orderEntity = new OrderEntity(
+                    order.getOrid(),
+                    order.getCustname(),
+                    order.getCustemail(),
+                    order.getPaymenttype(),
+                    order.getTotal(),
+                    order.getDiscount(),
+                    order.getDate(),
+                    order.getEmployeeid()
+            );
+            session.save(orderEntity);
+
+            for (OrderDetails detail : cart) {
+                OrderDetailsEntity detailEntity = new OrderDetailsEntity(
+                        detail.getId(),
+                        detail.getOrid(),
+                        detail.getName(),
+                        detail.getQty(),
+                        detail.getPrice(),
+                        detail.getDiscount()
+                );
+                session.save(detailEntity);
+
+                ProductEntity product = session.get(ProductEntity.class, detail.getId());
+                if (product != null) {
+                    int newQty = product.getQty() - detail.getQty();
+                    if (newQty < 0) {
+                        throw new RuntimeException("Insufficient stock for product: " + product.getName());
+                    }
+                    product.setQty(newQty);
+                    session.update(product);
+                }
+            }
+
+            transaction.commit();
+
+            cart = new ArrayList<>();
+            totalprice = 0;
+            selectedCustomerName = null;
+
+            return true;
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
     }
 }

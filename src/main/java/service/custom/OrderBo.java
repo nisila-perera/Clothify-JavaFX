@@ -13,4 +13,5 @@ public interface OrderBo {
     boolean addOrderDetails(OrderDetails orderDetails);
     List<OrderDetails> deleteOrderDetails(String id);
     List<OrderDetails> searchOrderDetail(String id);
+    public List<Order> getRecentOrders(int limit);
 }

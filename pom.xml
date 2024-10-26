@@ -51,5 +51,15 @@
             <artifactId>hibernate-core</artifactId>
             <version>6.5.0.Final</version>
         </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.20.0</version> <!-- Check for the latest version -->
+        </dependency>
     </dependencies>
 </project>

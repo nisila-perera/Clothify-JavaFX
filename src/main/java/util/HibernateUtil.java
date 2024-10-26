@@ -13,8 +13,11 @@ public class HibernateUtil {
     private static final SessionFactory sessionFactory = createSessionFactory();
 
     private static SessionFactory createSessionFactory() {
-        StandardServiceRegistry build = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
-        Metadata metadata = new MetadataSources(build)
+        StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+                .configure("hibernate.cfg.xml")
+                .build();
+
+        Metadata metadata = new MetadataSources(registry)
                 .addAnnotatedClass(EmployeeEntity.class)
                 .addAnnotatedClass(SupplierEntity.class)
                 .addAnnotatedClass(ProductEntity.class)
@@ -24,6 +27,7 @@ public class HibernateUtil {
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build();
+
         return metadata.getSessionFactoryBuilder().build();
     }
 

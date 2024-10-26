@@ -5,6 +5,8 @@ import controller.modelController.CustomerController;
 import controller.modelController.OrderController;
 import controller.modelController.ProductController;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,10 +15,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import lombok.Setter;
+import model.Order;
 import model.OrderDetails;
 import model.Product;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -92,14 +96,6 @@ public class AdminPlaceOrderFormController implements Initializable {
         itemsTable.getSelectionModel().clearSelection();
     }
 
-
-    public void btnCompleteOrderOnAction(ActionEvent actionEvent) {
-        if (adminMainFormController!=null){
-            adminMainFormController.loadCheckoutForm();
-        }
-        //todo
-    }
-
     public void btnCancelOrderOnAction(ActionEvent actionEvent) {
         if (adminMainFormController!=null){
             adminMainFormController.loadAdminHomeForm();
@@ -147,9 +143,15 @@ public class AdminPlaceOrderFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        OrderController.getInstance().clearCart();
-        cartList.clear();
+        OrderController.getInstance().getCart(0);
+        cartList = OrderController.getInstance().getCart();
+
         orderIdTxt.setText(OrderController.getInstance().generateId());
+
+        customerNameTxt.setText("Guest Order");
+        pleaseSelectTxt.setVisible(true);
+        addCustomerBtn.setDisable(false);
+        customerCmb.setValue(null);
 
         itemNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         itemQtyCol.setCellValueFactory(new PropertyValueFactory<>("qty"));
@@ -186,10 +188,27 @@ public class AdminPlaceOrderFormController implements Initializable {
         loadProductsTable();
     }
 
+
+
     private void loadProductsTable() {
         List<Product> products = ProductController.getInstance().getProduct();
         System.out.println("Loading products: " + products.size());
         itemsTable.setItems(FXCollections.observableArrayList(products));
+    }
+
+    public void btnCheckoutOnAction(ActionEvent actionEvent) {
+        if (adminMainFormController!=null){
+            adminMainFormController.loadCheckoutForm();
+        }
+    }
+
+    public void cmbOnAction(ActionEvent actionEvent) {
+        if (customerCmb.getValue()!=null||customerCmb.getValue().toString().equals("")) {
+            customerNameTxt.setText(customerCmb.getValue().toString());
+            pleaseSelectTxt.setVisible(false);
+            addCustomerBtn.setDisable(true);
+            OrderController.getInstance().setSelectedCustomerName(customerCmb.getValue().toString());
+        }
     }
 }
 

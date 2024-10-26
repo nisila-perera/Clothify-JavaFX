@@ -9,12 +9,12 @@
 
 <AnchorPane prefHeight="480.0" prefWidth="680.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.formController.admin.AdminHomeFormController">
    <children>
-      <TableView layoutX="29.0" layoutY="89.0" prefHeight="357.0" prefWidth="369.0">
+      <TableView fx:id="recentOrdersTable" layoutX="29.0" layoutY="89.0" prefHeight="357.0" prefWidth="369.0">
         <columns>
-          <TableColumn prefWidth="71.33331298828125" text="Order ID" />
-          <TableColumn minWidth="0.0" prefWidth="99.33334350585938" text="CustomerName" />
-            <TableColumn prefWidth="79.99993896484375" text="Amount" />
-            <TableColumn prefWidth="116.66667683919269" text="Date" />
+          <TableColumn fx:id="orderIdCol" prefWidth="71.33331298828125" text="Order ID" />
+          <TableColumn fx:id="customerNameCol" minWidth="0.0" prefWidth="99.33334350585938" text="CustomerName" />
+            <TableColumn fx:id="amountCol" prefWidth="79.99993896484375" text="Amount" />
+            <TableColumn fx:id="dateCol" prefWidth="116.66667683919269" text="Date" />
         </columns>
       </TableView>
       <Text fill="WHITE" layoutX="144.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Recent Orders">
