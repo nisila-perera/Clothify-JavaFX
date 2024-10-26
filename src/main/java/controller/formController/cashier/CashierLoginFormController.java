@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import model.Admin;
 import model.Employee;
@@ -64,5 +65,20 @@ public class CashierLoginFormController {
 
     public void btnCancelOnAction(ActionEvent actionEvent) {
         ((Stage) cashierEmailField.getScene().getWindow()).close();
+    }
+
+    public void passwordResetOnAction(MouseEvent mouseEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/cashier/cashier_password_reset.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            ((Stage) cashierEmailField.getScene().getWindow()).close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

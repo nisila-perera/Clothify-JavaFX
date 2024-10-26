@@ -2,6 +2,7 @@ package controller.formController.cashier;
 
 import javafx.event.ActionEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import lombok.Setter;
 
 public class CashierHomeFormController {
@@ -22,5 +23,9 @@ public class CashierHomeFormController {
 
     public void btnManageCustomersOnAction(ActionEvent actionEvent) {
         cashierMainFormController.loadCashierCustomerManagerForm();
+    }
+
+    public void btnLogOutOnAction(ActionEvent actionEvent) {
+        ((Stage) cashierWelcomeTxt.getScene().getWindow()).close();
     }
 }
